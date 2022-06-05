@@ -26,10 +26,58 @@ const ledZeppelin1969 = new addToCollection("Led Zeppelin II", "Led Zeppelin", 1
 console.log("Four more albums added", collection);
 
 function showCollection (array){
-    console.log(array.length)
-    for (let i=0; i<array.length; i++){
-       return console.log(array.sort(this.title, this.artist, this.yearPublished, '\r\n'));
+    console.log(array.length);
+    for (const key in array) {
+        //let key = `${array.title} + ${array.artist} + ${array.yearPublished}`;
+        console.log(`${key}: ${array[key]}`);
     }
 }
 
+//function showCollection (array){
+    //console.log(array.length)
+   // for (let i=0; i<array.length; i++){
+        //return console.log(this.title, this.artist, this.yearPublished);
+     //}
+ //}
+
+//function showCollection (array) {
+    //console.log(array.length);
+    //let newArrangement = array.title + " by " + array.artist + "," + array.yearPublished;
+    //for (let i=0; i<array.length; i++){
+        //return console.log(newArrangement);
+    //}
+//}
+//function showCollection (obj) {
+    //console.log(array.length);
+    //for (const key in obj) {
+        //let newArrangement = obj.title + " by " + obj.artist + "," + obj.yearPublished;
+        //return console.log(newArrangement);
+    //}
+//}
+
+
 showCollection(collection);
+
+
+//function findByArtist (string, array) {
+    //let matchingArtists = [];
+    //for (let i=0; i<array.length; i++){
+        //if (array[i].artist === string){
+            //return matchingArtists.push(string);
+        //}
+    //} 
+           // return matchingArtists;
+//}
+
+function findByArtist (string, obj){
+    let matchingArtists = [];
+    for (const key in obj) {
+        if (key === obj.artist){
+            return matchingArtists.push(string);
+        }
+    }
+            return matchingArtists;
+}
+
+console.log('Should have the artist in the array', findByArtist("Bob Dyland", collection));
+console.log('Should be empty', findByArtist("CCW", collection));
