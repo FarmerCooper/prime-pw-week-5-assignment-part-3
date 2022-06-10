@@ -1,15 +1,17 @@
 console.log('***** Music Collection *****')
 
-collection = [];
+let collection = [], element = {};
 
-function addToCollection(title, artist, yearPublished){
-    this.title = title;
-    this.artist = artist;
-    this.yearPublished = yearPublished;
-    return collection.push(title, artist, yearPublished);
+function addToCollection(titleInput, artistInput, yearPublishedInput){
+    element = {
+        title: titleInput,
+        artist: artistInput,
+        yearPublished: yearPublishedInput
+    }
+    return collection.push(element);
 }
 
-const bobDylan1964 = new addToCollection("The Times They Are A-Changin'", "Bob Dylan", 1964);
+const bobDylan1964 = new addToCollection ("The Times They Are A-Changin'", "Bob Dylan", 1964);
 
 console.log("Bob Dylan 1964 Album returned", collection);
 
@@ -25,11 +27,12 @@ const ledZeppelin1969 = new addToCollection("Led Zeppelin II", "Led Zeppelin", 1
 
 console.log("Four more albums added", collection);
 
+
 function showCollection (array){
     console.log(array.length);
-    for (const key in array) {
-        //let key = `${array.title} + ${array.artist} + ${array.yearPublished}`;
-        console.log(`${key}: ${array[key]}`);
+    for (const key of Object.keys(array)) {
+        array = `${array.titleInput} by ${array.artistInput}, ${array.yearPublishedInput}`;
+        console.log(JSON.stringify(array, null, 1));
     }
 }
 
@@ -47,10 +50,10 @@ function showCollection (array){
         //return console.log(newArrangement);
     //}
 //}
-//function showCollection (obj) {
+//function showCollection (array) {
     //console.log(array.length);
-    //for (const key in obj) {
-        //let newArrangement = obj.title + " by " + obj.artist + "," + obj.yearPublished;
+    //for (const key in array) {
+        //let newArrangement = title + " by " + artist + "," + yearPublished;
         //return console.log(newArrangement);
     //}
 //}
@@ -58,26 +61,20 @@ function showCollection (array){
 
 showCollection(collection);
 
+let matchingArtists = [];
 
-//function findByArtist (string, array) {
-    //let matchingArtists = [];
-    //for (let i=0; i<array.length; i++){
-        //if (array[i].artist === string){
-            //return matchingArtists.push(string);
-        //}
-    //} 
-           // return matchingArtists;
-//}
-
-function findByArtist (string, obj){
-    let matchingArtists = [];
-    for (const key in obj) {
-        if (key === obj.artist){
-            return matchingArtists.push(string);
+function findByArtist (artistInput, array) {
+    for (let i=0; i<array.length; i++){
+        if (array[i].artist === artistInput){
+            return matchingArtists.push(artistInput);
         }
-    }
-            return matchingArtists;
+    } 
+        return matchingArtists;
 }
 
-console.log('Should have the artist in the array', findByArtist("Bob Dyland", collection));
-console.log('Should be empty', findByArtist("CCW", collection));
+
+console.log('Should be empty. Matching artist:', findByArtist("CCW", collection));
+console.log('Should have the artist in the array', findByArtist("Bob Dylan", collection));
+console.log('Matching artists:', matchingArtists);
+console.log('Should have two artists in the array', findByArtist("Jimmy Hendrix", collection));
+console.log('Matching artists:', matchingArtists);
