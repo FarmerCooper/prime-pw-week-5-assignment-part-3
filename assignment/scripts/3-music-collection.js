@@ -28,13 +28,13 @@ const ledZeppelin1969 = new addToCollection("Led Zeppelin II", "Led Zeppelin", 1
 console.log("Four more albums added", collection);
 
 
-function showCollection (array){
-    console.log(array.length);
-    for (const key of Object.keys(array)) {
-        array = `${array.titleInput} by ${array.artistInput}, ${array.yearPublishedInput}`;
-        console.log(JSON.stringify(array, null, 1));
-    }
-}
+//function showCollection (array){
+    //console.log(array.length);
+    //for (const key of Object.keys(array)) {
+        //let newArrangement = `${array.titleInput} by ${array.artistInput}, ${array.yearPublishedInput}`;
+        //console.log(JSON.stringify(newArrangement));
+   // }
+//}
 
 //function showCollection (array){
     //console.log(array.length)
@@ -43,13 +43,13 @@ function showCollection (array){
      //}
  //}
 
-//function showCollection (array) {
-    //console.log(array.length);
-    //let newArrangement = array.title + " by " + array.artist + "," + array.yearPublished;
-    //for (let i=0; i<array.length; i++){
-        //return console.log(newArrangement);
-    //}
-//}
+ function showCollection (array) {
+    console.log(array.length);
+    for (let i=0; i<array.length; i++){
+        let newArrangement = `${array[i].title} by ${array[i].artist}, ${array[i].yearPublished}`;
+        console.log(newArrangement);
+    }
+}
 //function showCollection (array) {
     //console.log(array.length);
     //for (const key in array) {
